@@ -124,43 +124,38 @@ document.addEventListener("DOMContentLoaded", function() {
 
     if (micS) {
         micS.addEventListener("click", () => {
-            // console.log("Mic clicked, starting voice recognition...");
+            const recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
             
-            function voice() {
-                var recognition = new webkitSpeechRecognition();
-                recognition.lang = "en-GB";
-                
-                recognition.onstart = function() {
-                    console.log("Speech recognition started...");
-                };
-
-                recognition.onerror = function(event) {
-                    console.error("Speech recognition error: ", event.error);
-                };
-
-                recognition.onresult = function(event) {
-                    console.log("Speech recognition result event: ", event);
-                    if (event.results.length > 0) {
-                        console.log("Transcript: ", event.results[0][0].transcript);
-                        document.querySelector(".ques").value = event.results[0][0].transcript;
-                    } else {
-                        console.log("No speech recognized.");
-                    }
-                };
-                
-                recognition.onspeechend = function() {
-                    console.log("Speech recognition ended.");
-                    recognition.stop();
-                };
-
-                recognition.start();
+            if (!recognition) {
+                alert('Speech recognition is not supported in this browser.');
+                return;
             }
+            
+            const speechRecognition = new recognition();
+            speechRecognition.lang = "en-GB";
 
-            voice();
+            speechRecognition.onstart = function() {
+                console.log("Speech recognition started...");
+            };
+
+            speechRecognition.onerror = function(event) {
+                console.error("Speech recognition error: ", event.error);
+            };
+
+            speechRecognition.onresult = function(event) {
+                if (event.results.length > 0) {
+                    document.querySelector(".ques").value = event.results[0][0].transcript;
+                }
+            };
+
+            speechRecognition.onspeechend = function() {
+                console.log("Speech recognition ended.");
+                speechRecognition.stop();
+            };
+
+            speechRecognition.start();
         });
     } else {
         console.error("Element with class 'mic' not found.");
     }
 });
-
-
