@@ -44,7 +44,7 @@ const generateResponse = async () => {
         console.error(error);  
     }
 
-    inputf.value = '';
+    // inputf.value = '';
     // question.innerHTML=' ';
 };
 
