@@ -1,0 +1,22 @@
+{
+  "name": "aibot",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.4.1"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.17.1",
+    "dotenv": "^16.4.5",
+    "html2pdf": "^0.0.11",
+    "jspdf": "^2.5.1",
+    "marked": "^14.1.0"
+  }
+  
+}
