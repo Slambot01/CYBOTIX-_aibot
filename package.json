@@ -12,11 +12,10 @@
     "vite": "^5.4.1"
   },
   "dependencies": {
-    "@google/generative-ai": "^0.17.1",
+    "@google/generative-ai": "^0.17.2",
     "dotenv": "^16.4.5",
     "html2pdf": "^0.0.11",
     "jspdf": "^2.5.1",
     "marked": "^14.1.0"
   }
-  
 }
